@@ -2,6 +2,7 @@
 using BackEnd.Infrastructure.DataBase;
 using Microsoft.EntityFrameworkCore;
 using BackEnd.Infrastructure;
+using BackEnd.Bussines;
 namespace BackEnd.Api
 {
     public class Program
@@ -22,6 +23,7 @@ namespace BackEnd.Api
            options.UseSqlServer(builder.Configuration.GetConnectionString("backendConnection")));
 
             builder.Services.AddRepository(); // <-- Aquí registras UnitOfWorkPaciente
+            builder.Services.AddService(); // <-- Aquí registras Servicios
 
             var app = builder.Build();
 
