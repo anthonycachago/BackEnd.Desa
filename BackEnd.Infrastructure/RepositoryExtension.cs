@@ -1,6 +1,7 @@
 ﻿
 using BackEnd.Infrastructure.DataBase;
 using BackEnd.Infrastructure.Paciente;
+using BackEnd.Infrastructure.Repository.AuditEvent;
 using BackEnd.Infrastructure.Repository.Booking;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +15,7 @@ public static class RepositoryExtension
     {
         services.AddScoped<UnitOfWorkPaciente>();
         services.AddScoped<UnitOfWorkBooking>();
+        services.AddScoped<UnitOfWorkAuditEvent>();
         return services;
     }
     public static IServiceCollection AddDataBase(this IServiceCollection services, IConfiguration config)

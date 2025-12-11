@@ -2,7 +2,7 @@
 
 namespace BackEnd.Core.Models;
 
-public class AuditEvent
+public class AuditEventEntity
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public string? BookingId { get; set; }

@@ -28,16 +28,5 @@ public class BookingController:ControllerBase
 
         return Ok(sup);
     }
-    [HttpPost]
-    public async Task<IActionResult> CancelationBoking([FromBody] BookingEntity entity)
-    {
-        var creado = _server.BookingRepository.CreateAsync(entity);
-
-        if (creado == null)
-        {
-            return StatusCode(500, new { success = false, message = "No se pudo ." });
-        }
-
-        return Ok(new { success = true, data = creado });
-    }
+    
 }

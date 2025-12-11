@@ -45,6 +45,12 @@ public class BookingRepository: IBookingRepository
             .Where(x => x.SupplierId == supplierId && x.Status == "CONFIRMED")
             .FirstOrDefaultAsync();
     }
+    public async Task<BookingEntity?> GetBookingConfirmedAsync(string bookingId)
+    {
+        return await _db.Set<BookingEntity>()
+            .Where(x => x.BookingId == bookingId && x.Status == "CONFIRMED")
+            .FirstOrDefaultAsync();
+    }
 
 
     public IQueryable<BookingEntity> List()

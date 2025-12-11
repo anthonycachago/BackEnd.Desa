@@ -11,4 +11,5 @@ public interface IBookingRepository
     Task DeleteAsync(BookingEntity model);
     IQueryable<BookingEntity> List();
     Task<BookingEntity?> GetSupplierConfirmedAsync(string supplierId);
+    Task<BookingEntity?> GetBookingConfirmedAsync(string bookingId);
 }
