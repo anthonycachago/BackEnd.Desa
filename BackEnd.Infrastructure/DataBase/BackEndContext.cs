@@ -1,6 +1,6 @@
 ﻿
 
-using BackEnd.Infrastructure.DataBase.ConfigShema;
+
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 

@@ -1,7 +1,8 @@
-
-using BackEnd.Infrastructure.DataBase;
-using Microsoft.EntityFrameworkCore;
 using BackEnd.Infrastructure;
+using BackEnd.Bussines;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+
 namespace BackEnd.Api
 {
     public class Program
@@ -18,10 +19,26 @@ namespace BackEnd.Api
          
             builder.Services.AddSwaggerGen();
             // Add services to the container.
-            builder.Services.AddDbContext<BackEndContext>(options =>
-           options.UseSqlServer(builder.Configuration.GetConnectionString("backendConnection")));
+            builder.Services.AddDataBase(builder.Configuration);
+            builder.Services.AddRepository();
+            builder.Services.AddServicesExtension();
+            //token
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                        ValidAudience = builder.Configuration["Jwt:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(
+                            System.Text.Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)
+                        )
+                    };
+                });
 
-            builder.Services.AddRepository(); // <-- Aquí registras UnitOfWorkPaciente
 
             var app = builder.Build();
 
@@ -33,7 +50,7 @@ namespace BackEnd.Api
             }
 
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

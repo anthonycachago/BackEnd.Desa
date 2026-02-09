@@ -1,6 +1,7 @@
 ﻿
+using BackEnd.Core.Repository;
 using BackEnd.Infrastructure.DataBase;
-using BackEnd.Infrastructure.Paciente;
+using BackEnd.Infrastructure.Repository.BcaUsua;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +12,9 @@ public static class RepositoryExtension
 {
     public static IServiceCollection AddRepository(this IServiceCollection services)
     {
-        services.AddScoped<UnitOfWorkPaciente>();
+   
+        services.AddScoped<IBcaUsuaRepository,BcaUsuaRepository>();
+        
         return services;
     }
     public static IServiceCollection AddDataBase(this IServiceCollection services, IConfiguration config)
