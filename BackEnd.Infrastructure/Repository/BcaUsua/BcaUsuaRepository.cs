@@ -35,5 +35,10 @@ public class BcaUsuaRepository : BaseRepository<BcaUsuaEntity>, IBcaUsuaReposito
                 x.UsuaNomUsua == userName &&
                 x.UsuaCodEmpl == usuaCodEmpl);
     }
-
+    public Task<BcaUsuaEntity?> GetByUserTokenAsyn(string userName)
+    {
+        return _dbContext.Set<BcaUsuaEntity>()
+            .FirstOrDefaultAsync(x =>
+                x.UsuaNomUsua == userName);
+    }
 }

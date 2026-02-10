@@ -15,4 +15,10 @@ public class BcaUsuaEntity : ModelBase
     public string UsuaImpPred { get; set; } = string.Empty;
     [NotMapped]
     public string? PasswordPlano { get; set; }
+    [NotMapped]
+    public string? RefreshToken { get; set; }
+
+    [NotMapped]
+    public DateTime? RefreshTokenExpiryTime { get; set; }
+
 }
