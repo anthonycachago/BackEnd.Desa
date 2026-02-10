@@ -52,6 +52,6 @@ public class BcaClieController : ControllerBase
         var claims = User.Claims.Select(c => new { c.Type, c.Value }).ToList();
         return Ok(new { username, claims });
     }
-
+    //nuevos endpoints
 
 }
