@@ -71,7 +71,7 @@ public class BcaUsuaController: ControllerBase
             });
         }
 
-        // 🔽 Mapeo DTO → Entity
+        // Mapeo DTO
         var usuarioEntity = new BcaUsuaEntity
         {
             UsuaNomUsua = usuarioDto.UsuaNomUsua?.Trim()!,
