@@ -9,6 +9,7 @@
     <EnableSdkContainerDebugging>True</EnableSdkContainerDebugging>
     <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-1809</ContainerBaseImage>
     <UserSecretsId>fa7f39ef-adea-4e43-b52e-a521d57a961c</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.6.2" />
@@ -32,6 +34,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BackEnd.Bussines\BackEnd.Bussines.csproj" />
     <ProjectReference Include="..\BackEnd.Infrastructure\BackEnd.Infrastructure.csproj" />
+    <ProjectReference Include="..\BackEnd.ServiceDefaults\BackEnd.ServiceDefaults.csproj" />
   </ItemGroup>
 
 </Project>

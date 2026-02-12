@@ -6,7 +6,6 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Text;
 
 namespace BackEnd.Bussines.BcaUsua.Service;
@@ -84,7 +83,7 @@ public class BcaUsuaService: IBecaUsuaService
             signingCredentials: credentials
         );
 
-        // 🔁 Refresh token
+        // Refresh token
         var refreshClaims = new List<Claim>
     {
         new Claim(ClaimTypes.Name, usuario.UsuaNomUsua!.Trim()),
@@ -174,7 +173,7 @@ public class BcaUsuaService: IBecaUsuaService
             return null; // token inválido o expirado
         }
     }
-
+    //recuperar la contrasena
 
 
 

@@ -1,4 +1,4 @@
-﻿using BackEnd.Bussines;
+using BackEnd.Bussines;
 using BackEnd.Core.Dto.BcaUsua;
 using BackEnd.Infrastructure;
 using BackEnd.Infrastructure.AutoMapper;
@@ -14,6 +14,7 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        builder.AddServiceDefaults();
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
@@ -76,6 +77,8 @@ public class Program
             });
 
         var app = builder.Build();
+
+        app.MapDefaultEndpoints();
 
         if (app.Environment.IsDevelopment())
         {
