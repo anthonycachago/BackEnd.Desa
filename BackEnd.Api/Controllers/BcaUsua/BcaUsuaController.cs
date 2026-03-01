@@ -112,7 +112,10 @@ public class BcaUsuaController: ControllerBase
 
         return Ok(tokens);
     }
-
-
+    //recuperar contrasena 
+    [HttpPatch]
+    public IActionResult RecuperarPass(string Usuario) 
+    {  return BadRequest(ModelState); 
+    }
 
 }
